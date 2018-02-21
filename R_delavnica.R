@@ -36,11 +36,31 @@ grid.table(res)
 
 
 # time series
-Z<-rnorm(1000)
-Y<-rep(NA,1000)
-a <- runif(p)
-b <- runif(q)
+set.seed(1234)
+x<-rnorm(1000,mean=1,sd=10)
+casovna_vrsta <- data.frame(x)
 
-for(i in (max(p,q)+1):1000) {
-  Y[i] <- a*Y[i-(1:p)]+c(1,b)*Z[i-(0:q)]
-}
+plot(x, type = 'l')
+
+set.seed(2908)
+x<- ts(matrix(rnorm(8928),8928,1),start=(2017),frequency=8928)
+x
+
+# time series
+library(chron)
+t1 <- chron("1/1/2018","00:00:00")
+t2 <- chron("1/8/2018","00:00:01")
+deltat <- times("00:05:00")
+date <- seq(t1,t2,by=times("00:05:00"))
+frame <- data.frame(date,cas_vrsta=seq(10,100,length.out=2018))
+
+
+myts <- ts(frame, start=c(2018, 1), end=c(2018, 2), frequency=12) 
+plot(myts)
+
+library(forecast)
+forecast(auto.arima(frame, lambda = BoxCox.lambda(frame)), h =2)
+forecast(frame,h=2)
+
+
+install.packages("igraph")
