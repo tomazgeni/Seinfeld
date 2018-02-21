@@ -1,0 +1,6 @@
+drzava; ime
+CH; Sirlandija
+SI; Poticolandija
+DE; Wurstlandija
+AT; Jodlandija
+IT; Makaronlandija
