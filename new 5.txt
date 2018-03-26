@@ -1,0 +1,37 @@
+library(zoo)
+
+set.seed(1)
+original      = zoo((c(100,110,102,105,110,109,103,100)))
+peaked_shaved = zoo((c(100,105,102,105,105,105,103,100)))
+
+
+# Basic approach
+plot(original)
+lines(peaked_shaved, col = "red")
+
+# Panels
+plot.zoo(cbind(original, peaked_shaved))
+
+# Overplotted
+plot.zoo(cbind(original, peaked_shaved), plot.type = "single", col = c("red", "black"))
+
+
+
+
+
+xxx <- c(1,1,1,2,2,2,2,2,1,1,1,2,2,2,3,3,3,3,3,2,2,2,2,1,1,1,1,2,2,2,2,2,3,3,3,3)
+
+df <- data.frame(x=xxx)
+
+library(dplyr)
+
+df %>%
+  count(x) %>%
+   mutate(
+         prop = prop.table(n)
+        ,cum_perc = cumsum(prop)
+          )
+
+
+rm(xxx,df)
+
